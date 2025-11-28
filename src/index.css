@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-olivetti-red: #D33F49;
+  --color-olivetti-teal: #008F95;
+  --color-olivetti-cream: #F4F1EA;
+  --color-olivetti-grey: #2C2C2C;
+  --color-olivetti-yellow: #E0CA3C;
+  --color-olivetti-orange: #E85F24;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Courier Prime', monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  /* Fallback or usage in JS if needed, but v4 uses the @theme block */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-olivetti-cream);
+  color: var(--color-olivetti-grey);
+  font-family: var(--font-sans);
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.overlay-container {
+  width: 100%;
+  z-index: 1;
+}
+
+/* Typography Utilities */
+h1,
+h2,
+h3 {
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: var(--font-mono);
+  line-height: 1.6;
+}
+
+.text-red {
+  color: var(--color-olivetti-red);
+}
+
+.text-teal {
+  color: var(--color-olivetti-teal);
+}
+
+.text-grey {
+  color: var(--color-olivetti-grey);
+}
+
+.text-orange {
+  color: var(--color-olivetti-orange);
+}
+
+.text-yellow {
+  color: var(--color-olivetti-yellow);
+}
+
+.text-cream {
+  color: var(--color-olivetti-cream);
+}
+
+.bg-olivetti-cream {
+  background-color: var(--color-olivetti-cream);
+}
+
+.bg-grey {
+  background-color: var(--color-olivetti-grey);
+}
+
+/* Scrollbar hiding */
+.overlay-container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
