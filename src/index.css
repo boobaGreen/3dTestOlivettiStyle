@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Courier+Prime:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -12,11 +13,7 @@
   --font-mono: 'Courier Prime', monospace;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Courier+Prime:wght@400;700&display=swap');
 
-:root {
-  /* Fallback or usage in JS if needed, but v4 uses the @theme block */
-}
 
 * {
   box-sizing: border-box;

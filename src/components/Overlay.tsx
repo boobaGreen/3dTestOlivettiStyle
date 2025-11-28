@@ -31,7 +31,7 @@ export const Overlay = forwardRef<HTMLDivElement, any>((_props, ref) => {
                 </Section>
 
                 {/* Section 2: Comunità */}
-                <Section className="items-end text-right">
+                <Section className="items-end text-right justify-start pt-32">
                     <TypewriterText text="Comunità" className="text-6xl md:text-8xl mb-6 text-teal font-bold" />
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
@@ -78,20 +78,20 @@ export const Overlay = forwardRef<HTMLDivElement, any>((_props, ref) => {
                 </Section>
 
                 {/* Section 4: Cultura & Innovazione */}
-                <Section className="items-center text-center">
-                    <TypewriterText text="Cultura & Innovazione" className="text-5xl md:text-8xl mb-12 text-grey font-black" />
+                <Section className="items-center text-center justify-center py-20">
+                    <TypewriterText text="Cultura & Innovazione" className="text-5xl md:text-8xl mb-20 text-grey font-black" />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-4xl w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left max-w-5xl w-full">
                         <motion.div
                             whileHover={{ scale: 1.05 }}
-                            className="bg-white/80 p-8 border-t-4 border-teal hover:shadow-2xl transition-all"
+                            className="bg-white/80 p-8 border-t-4 border-teal hover:shadow-2xl transition-all backdrop-blur-md"
                         >
                             <h3 className="text-3xl mb-4 text-teal font-bold">Educazione</h3>
                             <p className="text-lg">Corsi di storia, politica, arte. L'educazione come chiave per il futuro.</p>
                         </motion.div>
                         <motion.div
                             whileHover={{ scale: 1.05 }}
-                            className="bg-white/80 p-8 border-t-4 border-orange hover:shadow-2xl transition-all"
+                            className="bg-white/80 p-8 border-t-4 border-orange hover:shadow-2xl transition-all backdrop-blur-md"
                         >
                             <h3 className="text-3xl mb-4 text-orange font-bold">Design</h3>
                             <p className="text-lg">Eccellenza tecnica e bellezza. Dal computer Elea alle iconiche macchine da scrivere.</p>
@@ -100,34 +100,34 @@ export const Overlay = forwardRef<HTMLDivElement, any>((_props, ref) => {
                 </Section>
 
                 {/* Section 5: Urbanistica */}
-                <Section className="justify-end pb-20 items-end">
-                    <TypewriterText text="Città Ideale" className="text-6xl md:text-8xl mb-6 text-yellow font-bold text-right" />
+                <Section className="items-start text-left justify-center pb-20">
+                    <TypewriterText text="Città Ideale" className="text-6xl md:text-8xl mb-6 text-yellow font-bold" />
                     <motion.p
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ duration: 1 }}
-                        className="text-2xl md:text-4xl max-w-3xl bg-white/90 p-8 border-b-8 border-grey text-right leading-tight"
+                        className="text-2xl md:text-4xl max-w-3xl bg-white/90 p-8 border-b-8 border-grey leading-tight backdrop-blur-sm"
                     >
                         Fabbriche luminose, aperte, integrate nel paesaggio. Un sistema industriale che unisce industria, lavoro e società.
                     </motion.p>
                 </Section>
 
                 {/* Section 6: Web3 Vision */}
-                <Section className="items-center">
-                    <TypewriterText text="Il Futuro Web3" className="text-6xl md:text-9xl mb-10 text-red font-black text-center" />
+                <Section className="items-center text-center justify-center py-20">
+                    <TypewriterText text="Il Futuro Web3" className="text-6xl md:text-9xl mb-16 text-red font-black" />
 
                     <motion.div
                         initial={{ scale: 0.9, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         transition={{ type: "spring" }}
-                        className="bg-grey text-cream p-10 font-mono text-lg md:text-xl max-w-3xl shadow-2xl w-full"
+                        className="bg-grey/95 text-cream p-12 font-mono text-lg md:text-xl max-w-4xl shadow-2xl w-full backdrop-blur-sm border-4 border-cream"
                     >
-                        <p className="mb-8 border-b border-cream/20 pb-4">
+                        <p className="mb-8 border-b border-cream/20 pb-4 text-center">
                             &gt; ISPIRAZIONE: OLIVETTI<br />
                             &gt; OBIETTIVO: ORACLE WEB3 SOSTENIBILE<br />
                             &gt; CAPITALE: COMUNITÀ
                         </p>
-                        <ul className="space-y-4">
+                        <ul className="space-y-6 text-left pl-4 md:pl-10">
                             <li className="flex items-center"><span className="text-teal mr-4 text-2xl">●</span> Sfruttare il capitale della comunità (Time, Skills, Ideas).</li>
                             <li className="flex items-center"><span className="text-yellow mr-4 text-2xl">●</span> Open Source & Trasparenza totale.</li>
                             <li className="flex items-center"><span className="text-orange mr-4 text-2xl">●</span> Token Economy per governance e partecipazione reale.</li>

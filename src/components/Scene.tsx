@@ -146,25 +146,27 @@ function CameraRig() {
             targetZ = remap(t, 0, 0.14, 10, 8); // Zoom in on Typewriter
         } else if (t < 0.28) {
             // Page 2: Typewriter -> City
-            targetY = remap(t, 0.14, 0.28, -5, -14);
+            targetY = remap(t, 0.14, 0.28, -5, -10); // Look higher (-10) so building (-14) is at bottom
             targetZ = remap(t, 0.14, 0.28, 8, 8);
         } else if (t < 0.42) {
             // Page 3: City Focus
-            targetY = remap(t, 0.28, 0.42, -14, -15);
-            targetX = -2;
+            targetY = remap(t, 0.28, 0.42, -10, -15); // Start from -10 for smoothness
+            targetX = -5;
         } else if (t < 0.57) {
-            // Page 4: City Detail
+            // Page 4: City Detail (Vertical Layout)
             targetY = remap(t, 0.42, 0.57, -15, -16);
-            targetX = 2;
+            targetX = 0; // Centered
+            targetZ = 12; // Zoom out slightly to fit text
         } else if (t < 0.71) {
             // Page 5: City Zoom Out -> Network
             targetY = remap(t, 0.57, 0.71, -16, -22);
-            targetZ = remap(t, 0.57, 0.71, 8, 15);
+            targetZ = remap(t, 0.57, 0.71, 12, 15);
+            targetX = -5;
         } else if (t < 0.85) {
-            // Page 6: Network
+            // Page 6: Network (Vertical Layout)
             targetY = remap(t, 0.71, 0.85, -22, -28);
-            targetZ = remap(t, 0.71, 0.85, 15, 10);
-            targetX = 0;
+            targetZ = remap(t, 0.71, 0.85, 15, 12);
+            targetX = 0; // Centered
         } else {
             // Page 7: End
             targetY = remap(t, 0.85, 1, -28, -35);
