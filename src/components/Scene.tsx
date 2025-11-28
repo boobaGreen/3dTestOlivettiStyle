@@ -5,41 +5,12 @@ import { EffectComposer, Noise, Vignette } from '@react-three/postprocessing';
 import * as THREE from 'three';
 import { ConstructivistTypewriter } from './ConstructivistTypewriter';
 import { ConstructivistCity } from './ConstructivistCity';
-
-// Helper to interpolate colors
-const lerpColor = (color1: string, color2: string, t: number) => {
-    const c1 = new THREE.Color(color1);
-    const c2 = new THREE.Color(color2);
-    return c1.lerp(c2, t);
-};
+import { GrainyBackground } from './GrainyBackground';
 
 // Helper for non-linear mapping
 const remap = (value: number, low1: number, high1: number, low2: number, high2: number) => {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 };
-
-function BackgroundController() {
-    const scroll = useScroll();
-    const { scene } = useThree();
-
-    useFrame(() => {
-        const r1 = scroll.range(0, 0.2);
-        const r2 = scroll.range(0.2, 0.2);
-        const r3 = scroll.range(0.4, 0.2);
-        const r4 = scroll.range(0.6, 0.3);
-
-        let targetColor = new THREE.Color('#F4F1EA');
-
-        if (r1 > 0 && r1 < 1) targetColor = lerpColor('#F4F1EA', '#2C2C2C', r1);
-        else if (r1 === 1 && r2 < 1) targetColor = lerpColor('#2C2C2C', '#008F95', r2);
-        else if (r2 === 1 && r3 < 1) targetColor = lerpColor('#008F95', '#D33F49', r3);
-        else if (r3 === 1) targetColor = lerpColor('#D33F49', '#E0CA3C', r4);
-
-        scene.background = targetColor;
-        scene.fog = new THREE.Fog(targetColor, 5, 40);
-    });
-    return null;
-}
 
 function TheRedThread() {
     const curve = useMemo(() => {
@@ -194,7 +165,7 @@ export const Scene = () => {
 
             <Environment preset="city" />
 
-            <BackgroundController />
+            <GrainyBackground />
 
             {/* Stars for depth */}
             <Stars radius={40} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
