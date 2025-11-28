@@ -47,11 +47,7 @@ export function TypewriterKey({ position = [0, 0, 0], char = "A", color = "#F4F1
                 />
             </mesh>
 
-            {/* Inner Ring (Metal) */}
-            <mesh position={[0, 0.08, 0]}>
-                <ringGeometry args={[0.25, 0.28, 32]} />
-                <meshStandardMaterial color="#C0C0C0" metalness={0.9} roughness={0.1} />
-            </mesh>
+
 
             {/* Character */}
             <Text
