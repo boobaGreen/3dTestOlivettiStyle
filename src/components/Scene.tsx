@@ -45,8 +45,9 @@ function TheRedThread() {
     const curve = useMemo(() => {
         return new THREE.CatmullRomCurve3([
             new THREE.Vector3(0, 5, 0),
-            new THREE.Vector3(2, -2, -5),    // Typewriter
+            new THREE.Vector3(1.5, -5, -3),  // Typewriter (Lower & Closer)
             new THREE.Vector3(-3, -14, 2),   // City
+            new THREE.Vector3(0, -20, 5),    // City Zoom Out Point
             new THREE.Vector3(3, -28, -5),   // Network
             new THREE.Vector3(0, -40, 0)     // End
         ]);
@@ -97,9 +98,9 @@ function ConstructivistScene() {
         <group ref={group}>
             <TheRedThread />
 
-            {/* 1. The Machine (Typewriter) */}
-            <group position={[2, -2, -5]}>
-                <ConstructivistTypewriter scale={0.6} />
+            {/* 1. The Machine (Typewriter) - Centered & Closer */}
+            <group position={[1.5, -5, -3]}>
+                <ConstructivistTypewriter scale={0.7} />
                 <InfographicLabel position={[3, 2, 0]} text="TECNOLOGIA" target={[0, 0, 0]} />
             </group>
 
@@ -107,6 +108,7 @@ function ConstructivistScene() {
             <group position={[-3, -14, 2]} rotation={[0, Math.PI / 4, 0]}>
                 <ConstructivistCity scale={0.6} />
                 <InfographicLabel position={[-3, 4, 0]} text="WELFARE" target={[0, 2, 0]} />
+                <InfographicLabel position={[4, 2, 0]} text="CULTURA" target={[2, 0, 0]} />
             </group>
 
             {/* 3. The Network (Web3) */}
@@ -133,30 +135,44 @@ function CameraRig() {
     useFrame((_state, delta) => {
         const t = scroll.offset;
         let targetY = 0;
+        let targetZ = 10;
+        let targetX = 0;
 
-        // 5-Page Layout Mapping
-        if (t < 0.2) {
-            // Page 1: Intro -> Typewriter
-            targetY = remap(t, 0, 0.2, 0, -5);
-        } else if (t < 0.4) {
+        // 7-Page Layout Mapping
+        if (t < 0.14) {
+            // Page 1: Intro -> Typewriter Focus
+            // Start at 0, move to -5 (Typewriter level)
+            targetY = remap(t, 0, 0.14, 0, -5);
+            targetZ = remap(t, 0, 0.14, 10, 8); // Zoom in on Typewriter
+        } else if (t < 0.28) {
             // Page 2: Typewriter -> City
-            targetY = remap(t, 0.2, 0.4, -5, -14);
-        } else if (t < 0.6) {
+            targetY = remap(t, 0.14, 0.28, -5, -14);
+            targetZ = remap(t, 0.14, 0.28, 8, 8);
+        } else if (t < 0.42) {
             // Page 3: City Focus
-            targetY = remap(t, 0.4, 0.6, -14, -16);
-        } else if (t < 0.8) {
-            // Page 4: City -> Network
-            targetY = remap(t, 0.6, 0.8, -16, -28);
+            targetY = remap(t, 0.28, 0.42, -14, -15);
+            targetX = -2;
+        } else if (t < 0.57) {
+            // Page 4: City Detail
+            targetY = remap(t, 0.42, 0.57, -15, -16);
+            targetX = 2;
+        } else if (t < 0.71) {
+            // Page 5: City Zoom Out -> Network
+            targetY = remap(t, 0.57, 0.71, -16, -22);
+            targetZ = remap(t, 0.57, 0.71, 8, 15);
+        } else if (t < 0.85) {
+            // Page 6: Network
+            targetY = remap(t, 0.71, 0.85, -22, -28);
+            targetZ = remap(t, 0.71, 0.85, 15, 10);
+            targetX = 0;
         } else {
-            // Page 5: Network -> End
-            targetY = remap(t, 0.8, 1, -28, -35);
+            // Page 7: End
+            targetY = remap(t, 0.85, 1, -28, -35);
         }
 
-        // Spiral Movement
-        const targetX = Math.sin(t * Math.PI * 2) * 2;
-        const targetZ = 10 + Math.cos(t * Math.PI * 2) * 5;
+        const spiralX = Math.sin(t * Math.PI * 2) * 2;
 
-        camera.position.x = THREE.MathUtils.damp(camera.position.x, targetX, 2, delta);
+        camera.position.x = THREE.MathUtils.damp(camera.position.x, targetX + spiralX, 2, delta);
         camera.position.y = THREE.MathUtils.damp(camera.position.y, targetY, 3, delta);
         camera.position.z = THREE.MathUtils.damp(camera.position.z, targetZ, 2, delta);
 

@@ -9,7 +9,7 @@ function App() {
     <>
       <Canvas shadows camera={{ position: [0, 0, 10], fov: 35 }}>
         <Suspense fallback={null}>
-          <ScrollControls pages={5} damping={0.1}>
+          <ScrollControls pages={7} damping={0.1}>
             {/* 3D Content that moves/reacts to scroll */}
             <Scene />
 
